@@ -3,9 +3,6 @@ import tensorflow as tf
 
 class Discriminator(tf.keras.Model):
 
-    def compute_output_signature(self, input_signature):
-        pass
-
     def __init__(self, depth, output_size, *args, dropout_rate=0.2, **kwargs):
         super().__init__(*args, **kwargs)
         self.depth = depth

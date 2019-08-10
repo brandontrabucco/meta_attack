@@ -3,9 +3,6 @@ import tensorflow as tf
 
 class Generator(tf.keras.Model):
 
-    def compute_output_signature(self, input_signature):
-        return input_signature
-
     def __init__(self, depth, *args, dropout_rate=0.2, **kwargs):
         super().__init__(*args, **kwargs)
         self.depth = depth

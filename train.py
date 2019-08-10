@@ -45,12 +45,13 @@ if __name__ == "__main__":
             content_loss = tf.reduce_mean(tf.abs(real_images - fake_images))
             outer_loss = (config.content_loss_weight * content_loss -
                           config.adverse_loss_weight * inner_loss)
-            gradients = tape.gradient(outer_loss, generator.trainable_variables)
-            optimizer.apply_gradients(
-                zip(gradients, generator.trainable_variables))
 
-            print("[{:09d}] Outer loss: {:.5f}\tAdverse loss: {:.5f}\tContent loss: {:.5f}".format(
-                o,
-                outer_loss.numpy(),
-                -inner_loss.numpy(),
-                content_loss.numpy()))
+        gradients = tape.gradient(outer_loss, generator.trainable_variables)
+        optimizer.apply_gradients(
+            zip(gradients, generator.trainable_variables))
+
+        print("[{:09d}] Outer loss: {:.5f}\tAdverse loss: {:.5f}\tContent loss: {:.5f}".format(
+            o,
+            outer_loss.numpy(),
+            -inner_loss.numpy(),
+            content_loss.numpy()))
