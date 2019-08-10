@@ -20,7 +20,7 @@ class Generator(tf.keras.Model):
 
         self.deconv_layers = [
             tf.keras.layers.Conv2DTranspose(
-                (2**(i + 3) if i > 0 else 3), 3, strides=2, padding="same")
+                (2**(i + 2) if i > 0 else 3), 3, strides=2, padding="same")
             for i in reversed(range(depth))]
         self.deconv_batch_norm_layers = [
             tf.keras.layers.BatchNormalization()

@@ -12,8 +12,8 @@ if __name__ == "__main__":
     discriminator = Discriminator(config.network_depth, config.label_size)
     optimizer = tf.keras.optimizers.Adam()
 
-    images = tf.random.normal([1, config.image_size, config.image_size, 3])
-    labels = tf.random.uniform([1], maxval=config.label_size, dtype=tf.int32)
+    images = tf.random.normal([32, config.image_size, config.image_size, 3])
+    labels = tf.random.uniform([32], maxval=config.label_size, dtype=tf.int32)
 
     for o in range(config.outer_steps):
         with tf.GradientTape(persistent=True) as tape:
